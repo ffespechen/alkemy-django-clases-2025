@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+    Listado de Artículos
+{% endblock titulo %}
+
+{% block contenido %}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">nombre</th>
+          <th scope="col">cantidad</th>
+          <th scope="col">precio</th>
+          <th scope="col">promocion</th>
+          <th scope="col">activo</th>
+          <th scope="col">borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+        {% for articulo in articulos %}
+          <tr>
+
+            <th scope="row">
+              <a href="{% url 'app_templates:detalle' articulo.id %}">
+                <img src="{% static 'img/ir-a.png' %}" width="32px">
+              </a>
+            </th>
+
+
+            <td>{{articulo.nombre}}</td>
+            <td align="right">{{articulo.cantidad}}</td>
+            <td align="right"> U$D {{articulo.precio}}</td>
+
+            <td>
+            <a href="{% url 'app_templates:modificar_promocion' articulo.id %}">
+            {% if articulo.promocion %}
+            <h6>Imperdible <span class="badge text-bg-secondary">PROMOCIÓN</span></h6>
+            {% else %}
+            <h6>sin promo</h6>      
+            {% endif %}
+            </a>
+            </td>
+
+            {% if  articulo.activo %}
+                <td>
+                  <img src="{% static 'img/comprobado.png' %}" alt="SI" width="32px">
+                </td>
+            {% else %}
+                <td>
+                  <img src="{% static 'img/cancelar.png' %}" alt="NO" width="32px">
+                </td>
+            {% endif %}
+
+            <td>
+              <a href="{% url 'app_templates:borrar' articulo.id %}">
+                <img src="{% static 'img/borrar.png' %}" width="32px">
+              </a>
+            </td>
+            
+          </tr>
+        {% endfor %}
+
+      </tbody>    
+
+</table>
+{% endblock contenido %}

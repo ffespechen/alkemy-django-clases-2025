@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Detalle de {{articulo}}
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{articulo.nombre}}</h5>
+      <p class="card-text">{{articulo.precio}}</p>
+      <a href="#" class="btn btn-primary">{{articulo.id}}</a>
+    </div>
+  </div>
+
+{% endblock contenido %}
