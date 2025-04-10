@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block titulo %}Listado de Relacionados{% endblock titulo %}
+
+{% block contenido %}
+<ul>
+    {% for relacionado in lista_relacionados %}
+    <li>{{relacionado.articulo}} {{relacionado.leyenda}} {{relacionado.fecha}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock contenido %}

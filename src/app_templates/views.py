@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core import serializers
 from django.http import JsonResponse, HttpResponseRedirect
-from django.urls import reverse 
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, UpdateView
 from .models import Articulo
 
 # Create your views here.
@@ -54,3 +55,17 @@ def modificar_promocion(request, id):
     articulo_a_modificar.save()
     return HttpResponseRedirect(reverse('app_templates:listar'))
 
+
+class ArticuloCreateView(CreateView):
+    model = Articulo 
+    fields = '__all__'
+    template_name = 'crear.html'
+    success_url = reverse_lazy('app_templates:listar')
+
+
+class ArticuloUpdateView(UpdateView):
+    model = Articulo 
+    fields = '__all__'
+    template_name = 'crear.html'
+    success_url = reverse_lazy('app_templates:listar')
+    

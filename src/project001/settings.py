@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Aplicaciones propias
     'app_bienvenida',
     'app_templates',
+    'app_relacionada'
 ]
 
 MIDDLEWARE = [

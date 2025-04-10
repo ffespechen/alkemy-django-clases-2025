@@ -11,5 +11,7 @@ urlpatterns = [
     path('listar_json/', views.listar_json, name='listar_json',),
     path('detalle/<int:id>/', views.detalle_articulo, name='detalle'),
     path('borrar/<int:id>/', views.borrar_articulo, name='borrar'),
-    path('modificar/<int:id>/', views.modificar_promocion, name='modificar_promocion'),
+    path('modificar_promocion/<int:id>/', views.modificar_promocion, name='modificar_promocion'),
+    path('crear/', views.ArticuloCreateView.as_view(), name='crear'),
+    path('modificar/<int:pk>/', views.ArticuloUpdateView.as_view(), name='modificar'),
 ]

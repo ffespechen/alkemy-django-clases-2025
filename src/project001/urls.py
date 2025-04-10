@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('alkemy/', include('app_bienvenida.urls', namespace='app_bienvenida')),
     path('templates/', include('app_templates.urls', namespace='app_templates')),
+    path('clases/', include('app_relacionada.urls', namespace='app_relacionada')),
 ]
