@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('app_auth.urls', namespace='app_auth')),
     path('admin/', admin.site.urls),
     path('alkemy/', include('app_bienvenida.urls', namespace='app_bienvenida')),
     path('templates/', include('app_templates.urls', namespace='app_templates')),

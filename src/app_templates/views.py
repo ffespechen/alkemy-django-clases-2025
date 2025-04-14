@@ -3,6 +3,7 @@ from django.core import serializers
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.decorators import login_required 
 from .models import Articulo
 
 # Create your views here.
@@ -20,6 +21,7 @@ def vista_heredero1(request, titulo, contenido):
                   'app_templates/heredero1.html',
                   {'var_titulo': titulo, 'var_contenido': contenido})
 
+@login_required
 def listar_articulos(request):
     articulos = Articulo.objects.all()        
 
@@ -35,6 +37,7 @@ def detalle_articulo(request, id):
     return render(request,
                   'app_templates/detalle.html',
                   {'articulo': articulo})
+
 
 
 def listar_json(request):
