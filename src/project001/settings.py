@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'app_templates',
     'app_relacionada',
     'app_auth',
+    'app_api',
+    # Terceros
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,14 @@ LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGOUT_REDIRECT_URL = '/login/'
 LOGIN_REDIRECT_URL = '/alkemy/bienvenida/'
+
+
+# Configuración de Django REST Framework
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
