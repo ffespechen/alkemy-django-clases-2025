@@ -1,15 +1,24 @@
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from .serializers import ArticuloSerializer 
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework import viewsets
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly 
+from .serializers import ArticuloSerializer, RelacionadoSerializer
 from app_templates.models import Articulo
+from app_relacionada.models import Relacionado
+
 
 # Create your views here.
-class ArticuloListAPIView(ListAPIView):
+class ArticuloListCreateAPIView(ListCreateAPIView):
     queryset = Articulo.objects.all()
     serializer_class = ArticuloSerializer 
 
 
-class ArticuloRetrieveAPIView(RetrieveAPIView):
+class ArticuloRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Articulo.objects.all()
     serializer_class = ArticuloSerializer 
 
+
+class RelacionadoViewSet(viewsets.ModelViewSet):
+    queryset = Relacionado.objects.all()
+    serializer_class = RelacionadoSerializer
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly, ]

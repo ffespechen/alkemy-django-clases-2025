@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Router para API
+from rest_framework import routers
+from app_api.views import RelacionadoViewSet
+
+router = routers.SimpleRouter()
+router.register(r'relacionado', RelacionadoViewSet)
+
+
 urlpatterns = [
     path('', include('app_auth.urls', namespace='app_auth')),
     path('api/', include('app_api.urls', namespace='app_api')),
@@ -25,3 +33,5 @@ urlpatterns = [
     path('templates/', include('app_templates.urls', namespace='app_templates')),
     path('clases/', include('app_relacionada.urls', namespace='app_relacionada')),
 ]
+
+urlpatterns += router.urls 
